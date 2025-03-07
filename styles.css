@@ -1,0 +1,515 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top left, #00008b, #00ced1),  /* Couleur de fond */
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.5), transparent);
+    height : 100vh;
+    margin : 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Assure que le body occupe toute la hauteur de la fenêtre */
+}
+body, html {
+    width: 100%;
+    overflow-x: hidden;  /* Empêche le débordement horizontal */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 768px) {
+    .sidebar {
+        min-width: 100%; /* Ajuster la largeur pour les écrans plus petits */
+        padding: 10px; /* Réduire les marges intérieures */
+    }
+}
+@media (min-width: 768px) {
+    .element {
+        flex: 1 1 50%;
+    }
+}
+@media (min-width: 768px) {
+    .grille {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1024px) {
+    .grille {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1024px) {
+    .grille {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+/* Média query pour les écrans de 600px et plus */
+@media screen and (min-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+/* Média query pour les écrans de 768px et plus */
+@media screen and (min-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+}
+
+/* Média query pour les écrans de 992px et plus */
+@media screen and (min-width: 992px) {
+    .container {
+        padding: 40px;
+    }
+}
+
+/* Média query pour les écrans de 1200px et plus */
+@media screen and (min-width: 1200px) {
+    .container {
+        padding: 50px;
+    }
+}
+
+header {
+    background-color: #00008b;  /* Couleur de fond rouge foncé */
+    color: #fff;  /* Couleur du texte blanc */
+    height: 60px;
+    padding: 10px 0;  /* Padding vertical de 10px */
+    text-align: center;  /* Centrer le texte */
+    width: 100%;  /* Assure que l'en-tête prend toute la largeur de la page */
+    margin: 0;  /* Élimine toutes les marges */
+    box-sizing: border-box;  /* Assure que le padding est inclus dans la largeur */
+}
+header h1 {
+    margin: 0px;  /* Élimine les marges */
+}
+.logo {
+    width: 100px;
+    position: relative;
+    float: right;
+    top: -150%;
+    right: 5px;
+}
+.menu-toggle {
+    font-size: 22px;  /* Taille de police de 22px */
+    cursor: pointer;  /* Curseur en forme de main pour pointer */
+    display: flex;  /* Utilise flexbox pour aligner les éléments */
+    align-items: center;  /* Centre les éléments verticalement */
+    position: fixed;  /* Position absolue pour positionner précisément */
+    top: -40px;  /* Distance de 10px par rapport au haut */
+    left: 9px;  /* Distance de 20px par rapport à la gauche */
+    z-index: 11000;  /* Assure que le menu-toggle est au-dessus de la barre latérale */
+    margin-top: 50px;  /* Marge supérieure de 50px */
+    margin-left: -10px;  /* Marge gauche de -20px */
+    padding: 10px;  /* Padding de 10px */
+    transition: none;  /* Transition fluide pour les changements de couleur */
+}
+#menu-toggle:hover {
+    background-color: #5100ff;  /* Change la couleur de fond en vert clair au survol */
+    box-sizing: border-box;  /* Assure que le padding est inclus dans la largeur */
+}
+.menu-toggle img {
+    width: 26px;  /* Largeur de 20px */
+    height: 29px;  /* Hauteur de 20px */
+    filter: invert(100%);
+}
+body.sidebar-active header,
+body.sidebar-active .content,
+body.sidebar-active footer {
+  filter: blur(20px);
+}
+}
+body.sidebar-active {
+  overflow: hidden;
+  user-select: none;
+}
+.sidebar {
+    position: relative;
+    z-index: 9999999; /* S'assure que la sidebar est au-dessus du contenu */
+}
+body.sidebar-active #map,
+body.sidebar-active img {
+  cursor: Default;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Transparent pour ne pas affecter la visibilité */
+  z-index: 9998; /* En dessous du sidebar */
+  pointer-events: auto; /* Activer les événements de pointage */
+}
+#sidebar {
+    background-color: transparent;  /* Barre latérale complètement transparente */
+    display: flex;  /* Utilise flexbox pour aligner les éléments */
+    flex-direction: column;  /* Aligne les éléments en colonne */
+    padding: 20px;  /* Padding de 20px */
+    position: fixed;  /* Position fixe pour rester en place lors du défilement */
+    top: 0%;  /* Distance de 0 par rapport au haut */
+    left: 0;  /* Distance de 0 par rapport à la gauche */
+    width: 10px;  /* Largeur initiale de 1px */
+    height: 100vh;  /* Ajustez la hauteur pour qu'elle ne chevauche pas le footer */
+    z-index: 1000;  /* Assure que la barre latérale est en arrière-plan */
+    overflow: hidden;  /* Masque le débordement */
+}
+#sidebar.active {
+    width: 130px;  /* Largeur de 160px lorsqu'elle est active */
+    background-color: rgb(24 85 133 / 91%);  /* Couleur de fond noire avec opacité complète */
+    z-index: 9000;  /* Utilise une valeur de z-index plus basse */
+    height: 100vh;
+}
+#sidebar.active .menu-toggle img {
+    filter: invert(100%);
+}
+#sidebar ul {
+    list-style: none;  /* Élimine les puces de la liste */
+    margin: 0px;  /* Élimine les marges */
+    padding: 0;  /* Élimine le padding */
+    width: 100%;  /* Largeur de 100% */
+    margin-top: 50px;  /* Marge supérieure de 90px */
+}
+#sidebar ul li {
+    position: relative;  /* Position relative pour les éléments enfants absolus */
+}
+#sidebar ul li a {
+    color: #ece4e4;  /* Couleur noire pour les textes lorsque le menu est fermé */
+    text-decoration: none;  /* Élimine la décoration de texte */
+    display: flex;  /* Utilise flexbox pour aligner les éléments */
+    align-items: center;  /* Centre les éléments verticalement */
+    padding: 10px;  /* Padding de 10px */
+    line-height: 10px;
+    position: relative;  /* Position relative pour les éléments enfants */
+    width: calc(100% + 20px);  /* Utilise toute la largeur du conteneur avec le décalage */
+    left: -20px;  /* Décalage de -20px */
+    pointer-events: none;
+}
+#sidebar.active ul li a {
+    color: #ede4e4;  /* Couleur blanche */
+    pointer-events: auto;
+}
+#sidebar.active ul li a:hover {
+    background-color: #8e97ed;  /* Change la couleur de fond en vert */
+    color: #000;  /* Assure que la couleur du texte reste noire */
+}
+#sidebar ul li a:hover img {
+    filter: none;  /* Désactive les filtres */
+}
+#sidebar ul li a img {
+    width: 30px;  /* Largeur de 20px */
+    height: 30px;  /* Hauteur de 20px */
+    margin-right: 10px;  /* Marge droite de 10px */
+    filter: invert(0%);  /* Couleur noire */
+    margin-left: 0px;  /* Élimine la marge gauche */
+    opacity: 1;  /* Opacité complète */
+    pointer-events: auto;
+    transition: none;
+}
+#sidebar ul li a img:hover {
+    background-color: #f5faf8;  /* Change la couleur de fond en vert */
+    border-radius: 200%;  /* Ajoute un bord arrondi (facultatif) */
+    transition: none;
+}
+#sidebar.active ul li a img {
+    filter: invert(100%);  /* Couleur blanche */
+    transition: none;
+}
+#sidebar ul li a span.menu-text {
+    display: none;  /* Masque le texte du menu */
+}
+#sidebar.active ul li a span.menu-text {
+    display: inline;  /* Affiche le texte du menu */
+    margin-left: 0px;  /* Marge gauche de 10px */
+    margin-top: 5px
+}
+.menu-close {
+    font-size: 46px;  /* Taille de police de 24px */
+    cursor: pointer;  /* Curseur en forme de main pour pointer */
+    position: absolute;  /* Position absolue pour positionner précisément */
+    right: 20px;  /* Distance de 20px par rapport à la droite */
+    display: none;  /* Masque par défaut */
+    z-index: 1100;  /* Assure que le bouton de fermeture est au-dessus de la barre latérale */
+    margin-top: -13px;  /* Marge supérieure de 50px */
+    color: white;
+}
+#menu-close:hover {
+    background-color: #5100ff;
+}
+#sidebar.active .menu-close {
+    display: block;  /* Affiche le bouton de fermeture */
+}
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* border: 5px solid #def859; */
+    align-items: center;
+    margin: auto;
+    position: relative;
+    width: 100vw;
+    padding: 20px;
+}
+#nom {
+    display: flex;
+     /* Disposer les éléments en ligne */
+    /* border: 7px solid #b11e1e; */
+    min-height: 80px;
+    width: 80%; /* S'assurer que le conteneur occupe toute la largeur */
+    margin-top: 0px;
+    margin-bottom: 12px;
+    justify-content: center; /* Centrer les éléments horizontalement */
+    /* flex: 1; */
+}
+@media (max-width: 600px) {
+    #nom {
+        flex-direction: column;
+        align-items: center; /* Centrer les éléments horizontalement */
+    }
+    #logo1 {
+        margin-bottom: 10px; /* Ajout d'un espace en bas du logo */
+    }
+    .texte-style {
+        text-align: center; /* Centrer le texte */
+    }
+
+#texte {
+    left: 20px;
+}
+}
+#logo1 {
+    border: 7px solid #3be75e00;
+    background: #a3696900;
+    height: 60px;
+    width: 27%;
+    margin-right: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.logo1 {
+    height: 80px;
+    /* width: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden
+}
+#texte {
+    border: 7px solid #68ffdb00;
+    background: #ffffff00;
+    /* height: 60px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 70px; */
+    max-width: 100%;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    /* left: -45px; */
+}
+.texte-style {
+    font-size: 30px;
+}
+
+.image-cover {
+    display: flex;
+    /* flex-direction: row; */
+    width: 80%;
+    margin: 0 auto; /* Centre le conteneur sur la page */
+}
+
+.large-slide {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative; /* Positioning context for child elements */
+    width: 80%; /* Large slide width */
+    height: 400px; /* Large slide height */
+    margin: auto; /* Center the large-slide */
+    background-color: #1c0909; /* Optional background color */
+    border: 6px solid #ff0000;
+    border-radius: 10%;
+}
+
+.small-slide {
+    position: absolute;
+    bottom: 0; /* Placed at the bottom of large-slide */
+    right: 0; /* Aligned to the right inside large-slide */
+    display: flex;
+    width: 60%; /* Occupies 50% of the large-slide width */
+    height: auto; /* Occupies 10% of the large-slide height */
+    overflow: hidden; /* Hides any overflow */
+    z-index: 10; /* Ensures it appears above other content */
+    background-color: rgb(198 27 27 / 80%); /* Optional background */
+    margin: 2%;
+}
+
+.large-slide .slide {
+    flex: 1; /* Ensures all slides share equal width */
+    background-color: #ccc; /* Placeholder background color */
+    margin: 0 1px;
+}
+.small-slide .slide {
+    flex: 1; /* Ensures all slides share equal width */
+    background-color: #ccc; /* Placeholder background color */
+    margin:0 2%;
+    
+    
+}
+.small-slide img {
+    border-radius: 20%;
+    
+}
+.dots {
+    position: relative;
+     /* Distance depuis le bas de .large-slide */
+    top: 20px; /* Centre horizontal */
+    /* transform: translateX(-50%); */ /* Correction du centrage */
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    /* z-index: 10; */
+}
+
+.dot {
+    height: 12px; /* Normal and readable size */
+    width: 12px;
+    border-radius: 50%; /* Round shape */
+    background-color: #bbb; /* Default color */
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171; /* Active dot color */
+}
+
+.large-slide img {
+    width: 100%; /* Matches the width of large-slide */
+    height: 100%; /* Matches the height of large-slide */
+    object-fit: cover; /* Ensures the image fills the slide without distortion */
+    border-radius: 5%; /* Optional rounded edges */
+}
+
+#imapETtexte {
+    /* flex: 1; */
+    border: 4px solid #050505;
+    background: #f18787;
+    width: 80%; /* Ajuster la largeur en fonction de vos besoins */
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 260px;
+}
+
+#imap {
+    border: 2px solid #69ff6d;
+    background: #aa9696;
+    width: 33%;
+    margin-right: 10px;
+    text-align: center;
+}
+.space {
+    flex: 1;
+}
+#texteimap {
+    border: 2px solid #69ff6d;
+    background: #f18787;
+    /* margin-right: auto; */
+    width: 60%;
+    /* height: 90%; */
+    overflow: hidden;
+    text-align: justify;
+}
+.imapETtexte: :after {
+    content: "";
+    display: block;
+    height: calc(100% - var(--second-child-height));
+    clear:both;
+}
+.texteimap {
+    --second-child-height: 100px
+}
+#abtxtETimgAbout {
+    /* flex: 1; */
+    border: 4px solid #050505;
+    background: #f18787;
+    width: 80%; /* Ajuster la largeur en fonction de vos besoins */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 260px;
+    margin-bottom: 20px;
+}
+#abtxt {
+    border: 2px solid #69ff6d;
+    background: #aa9696;
+    width: 60%;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: justify;
+}
+.space1 {
+    flex: 1;
+}
+#imgAbout {
+    border: 2px solid #69ff6d;
+    background: #f18787;
+    /* margin-right: auto; */
+    width: 40%;
+    /* height: 90%; */
+}
+.btxtETimgAbout: :after {
+    content: "";
+    display: block;
+    height: calc(100% - var(--second-child-height));
+    clear:both;
+}
+.imgAbout {
+    --second-child-height: 100px
+}
+#servArea {
+    border: 2px solid #69ff6d;
+    background: #aa9696;
+    width: 80%;
+    min-height: 100px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+#prtfl {
+    border: 2px solid #69ff6d;
+    background: #aa9696;
+    width: 80%;
+    min-height: 100px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+#contactnous {
+    border: 2px solid #69ff6d;
+    background: #aa9696;
+    width: 80%;
+    min-height: 100px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+footer {
+    background-color: #000056;  /* Couleur de fond noire */
+    color: #ffffff;
+    text-align: center;
+    padding: 9px 0;
+    position: relative;  /* Position relative pour les éléments enfants */
+    width: 100%;
+    box-sizing: border-box;
+}
+footer p {
+    margin: 0;  /* Élimine toutes les marges par défaut */
+    padding: 0;  /* Élimine tous les paddings */
+}
+footer p + p {
+    margin-top: 1px;  /* Ajuste la marge supérieure entre les paragraphes */
+}
