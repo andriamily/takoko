@@ -112,7 +112,7 @@ header h1 {
 .menu-toggle img {
     width: 26px;  /* Largeur de 20px */
     height: 29px;  /* Hauteur de 20px */
-    filter: invert(100%);
+    filter: invert(10%);
 }
 body.sidebar-active header,
 body.sidebar-active .content,
