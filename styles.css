@@ -1028,7 +1028,7 @@ body.sidebar-active img {
     overflow: hidden;
     text-align: justify;
     margin-bottom: 20px;
-    background-image: url('D:/My_Project/images/ph.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image */
+    background-image: url('images/ph.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image */
     background-size: cover; /* Ajuste l'image pour couvrir toute la div */
     background-repeat: no-repeat; /* Évite la répétition de l'image */
     background-position: center; /* Centre l'image dans la div */
@@ -1264,7 +1264,7 @@ height: 8vh;
     overflow: hidden;
     text-align: justify;
     margin-bottom: 20px;
-    background-image: url('D:/My_Project/images/ph1.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image */
+    background-image: url('images/ph1.jpg'); /* Remplacez 'votre-image.jpg' par le chemin de votre image */
     background-size: cover; /* Ajuste l'image pour couvrir toute la div */
     background-repeat: no-repeat; /* Évite la répétition de l'image */
     background-position: center; /* Centre l'image dans la div */
