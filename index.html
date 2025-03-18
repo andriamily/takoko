@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="sidebar">
+        <ul>
+            <li><a href="index.html"><img src="images/icone-home.png" alt="Home Icon"><span class="menu-text"> Page d'accueil</span></a></li>
+            <li><a href="about.html"><img src="images/icone-about.png" alt="About Icon"><span class="menu-text"> À propos</span></a></li>
+            <li><a href="services.html"><img src="images/icone-services.png" alt="Services Icon"><span class="menu-text"> Nos services</span></a></li>
+            <li><a href="portfolios.html"><img src="images/icone-portfolio.png" alt="Portfolios Icon"><span class="menu-text"> Portfolios</span></a></li>
+            <li><a href="contact.html"><img src="images/icone-contact.png" alt="Contact Icon"><span class="menu-text"> Contact</span></a></li>
+        </ul>
+        <div class="menu-close hidden" id="menu-close">&times;</div>
+    </nav>
+    
+    <header>
+        <div class="menu-toggle" id="menu-toggle">
+            <img src="images/icone-menu.png" alt="Menu Icon" class="menu-icon">
+        </div>
+        <div id="txth1" class="txth1"></div>
+        <div id="logo"><img src="images/logo.png"></div>
+    </header>
+    
+    <div class="content">
+        <div class="image-cover">
+            <div class="slides">
+                <div class="slide slide1">
+                    <img src="images\photo1.jpg" alt="Slide 1">
+                    <div class="text" id="text-slide1"><img src="images/logo.png"></div>
+                    <div class="containerSLIDE">
+                        <div id="monTexte" class="texteSLIDE"></div>
+                    </div>
+                    <div id="text1-slide1">Des services spécialisés pour vous</div>
+                    <div id="text2-slide1">- Service 1</div>
+                    <div id="text3-slide1">- Service 2</div>
+                    <div id="text4-slide1">- Service 3</div>
+                </div>
+                <div class="slide slide2">
+                    <img src="images\photo2.jpg" alt="Slide 2">
+                    <div class="text" id="text-slide2">Exemple de titre</div>
+                    <div id="text1-slide2">- texte exemple 1</div>
+                    <div id="text2-slide2">- texte exemple 2</div>
+                    <div id="text3-slide2">- texte exemple 3</div>
+                </div>
+                <div class="slide slide3">
+                    <img src="images\photo3.jpg" alt="Slide 3">
+                    <div class="text" id="text-slide3">Exemple de titre</div>
+                    <div id="text1-slide3">- texte exemple 1</div>
+                    <div id="text2-slide3">- texte exemple 2</div>
+                    <div id="text3-slide3">- texte exemple 3</div>
+                </div>
+                <div class="slide slide4">
+                    <img src="images\photo4.jpg" alt="Slide 4">
+                    <div class="text" id="text-slide4">Exemple de titre</div>
+                    <div id="text1-slide4">- texte exemple 1</div>
+                    <div id="text2-slide4">- texte exemple 2</div>
+                    <div id="text3-slide4">- texte exemple 3</div>
+                </div>
+                <div class="slide slide5">
+                    <img src="images\photo5.jpg" alt="Slide 5">
+                    <div class="text" id="text-slide5">Exemple de titre</div>
+                    <div id="text1-slide5">- texte exemple 1</div>
+                    <div id="text2-slide5">- texte exemple 2</div>
+                    <div id="text3-slide5">- texte exemple 3</div>
+                </div>
+                <div class="slide slide6">
+                    <img src="images\photo6.jpg" alt="Slide 6">
+                    <div class="text" id="text-slide6">Exemple de de titre</div>
+                    <div id="text1-slide6">- texte exemple 1</div>
+                    <div id="text2-slide6">- texte exemple 2</div>
+                    <div id="text3-slide6">- texte exemple 3</div>
+                </div> 
+            </div>
+            <!-- Flèches de navigation -->
+            <div class="arrow left" onclick="changeSlide(-1)">&#10094;</div>
+            <div class="arrow right" onclick="changeSlide(1)">&#10095;</div>
+        </div>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+        </div>
+        
+        <div id="nom">
+            <div id="logo1"><img src="images/logo.png" alt="logo" class="logo1"></div>
+            <div id="texte" class="texte-style">takoko consulting</div>
+        </div>
+        
+        <div id="imapETtexte" class="imapETtexte">
+            <div id="imap">imap</div>
+            <div id="texteimap" class="texteimap">
+                <p class="texteimapparagraphe1">Peu importe où vous êtes dans le monde, nous pouvons collaborer sans aucune contraintes géographique.</p>
+                <p class="texteimapparagraphe2">Flexibilité et Disponibilité : Nous travaillons majoritairement à distance, ce qui nous permet de collaborer avec des clients de différentes régions et d’offrir une grande flexibilité.</p>
+                <p class="texteimapparagraphe3">Outils et Technologies : Nous utilisons des outils de communications pour faciliter les échanges, ainsi que des logiciels sophistiqués pour assurer une communication et une collaboration efficaces.</p>
+                <p class="texteimapparagraphe4">Avantages : Travailler avec nous à distance présente de nombreux avantages, notamment la flexibilité des horaires, la réduction des coûts de déplacement et l’efficacité des communications numériques.</p>
+            </div>
+        </div>
+        
+        <div id="abtxtETimgAbout" class="abtxtETimgAbout">
+            <div class="Cabtxt">
+                <div class="abtxt" id="abtxt">takoko consulting en quelques mots :</div>
+                    <div class="abtxtco">
+                        <div id="conteneur1">
+                            <div id="abtxt1" class="abtxtc"></div>
+                        </div>
+                        <div id="conteneur2">
+                            <div id="abtxt2" class="abtxtc"></div>
+                        </div>
+                        <div id="conteneur3">
+                            <div id="abtxt3" class="abtxtc"></div>
+                        </div>
+                        <div id="conteneur4">
+                            <div id="abtxt4" class="abtxtc"></div>
+                        </div>
+                    </div>
+                </div>
+            <div id="imgAbout">imgAbout</div>
+        </div>
+
+        <div id="imageETservArea" class="imageETservArea">
+            <div id="imageservArea">imageservArea</div>
+            <div id="servArea" class="servArea">
+                <p class="servAreaparagraphe1">Nous proposons une gamme complète de services spécialisés,.</p>
+                <p class="servAreaparagraphe2">combinant passion et expertise pour offrir des solutions de pointe dans les domaines suivants :</p>
+                <p class="servAreaparagraphe3">Cartographie et Géomatique., Hydrogéologie, Urbanisme et Travaux Publics,</p>
+                <p class="servAreaparagraphe4">Infographie et digitalisation, Environnement … Decouvrez nos services …</p>
+            </div>
+        </div>
+        
+        <div id="portfolio" class="portfolio">
+            <div id="prtflinitial">Découvrez Quelques exemples de nos réalisations.</div>
+            <div id="prtflitem" class="prtflitem">
+                <div id="prtfl1" class="prtfl1">
+                    <div id="prtfl1img" class="prtfl1img">
+                        <div id="prtfl1img1" class="prtfl1img1"><img src="images\prtfl1img1.jpg"></div>
+                        <div id="prtfl1img2" class="prtfl1img2"><img src="images\prtfl1img2.jpg"></div>
+                    </div> 
+                    <div id="prtfl1descri" class="prtfl1descri">texte</div>   
+                </div>
+                <div id="prtfl2" class="prtfl2">
+                    <div id="prtfl2img" class="prtfl2img">
+                        <div id="prtfl2img1" class="prtfl2img1"><img src="images\prtfl2img1.jpg"></div>
+                        <div id="prtfl2img2" class="prtfl2img2"><img src="images\prtfl2img2.jpg"></div>
+                    </div> 
+                    <div id="prtfl2descri" class="prtfl2descri">texte</div>   
+                </div>
+                <div id="prtfl3" class="prtfl3">
+                    <div id="prtfl3img" class="prtfl3img">
+                        <div id="prtfl3img1" class="prtfl3img1"><img src="images\prtfl1img1.jpg"></div>
+                        <div id="prtfl3img2" class="prtfl3img2"><img src="images\prtfl1img2.jpg"></div>
+                    </div> 
+                    <div id="prtfl3descri" class="prtfl3descri">texte</div>   
+                </div>
+                <div id="prtfl4" class="prtfl4">
+                    <div id="prtfl4img" class="prtfl4img">
+                        <div id="prtfl4img1" class="prtfl4img1"><img src="images\prtfl2img1.jpg"></div>
+                        <div id="prtfl4img2" class="prtfl4img2"><img src="images\prtfl2img2.jpg"></div>
+                    </div>
+                    <div id="prtfl4descri" class="prtfl4descri">texte</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="contactnous">| Contactez-nous |.</div>
+    </div>
+    <footer>
+        <p>&copy; 2025 takoko. Tous droits réservés.</p>
+        <p>takoko@gmail.com</p>
+    </footer>
+    <script src="gsap.min.js"></script>
+    <script src="TextPlugin.min.js"></script>
+    <script src="ScrollTrigger.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
